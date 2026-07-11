@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Slider</title>
+    <style>
+
+      
+
+      /* ── SLIDER SECTION ── */
+      .slider-section {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #111;
+      }
+
+      .cf-scene {
+        position: relative;
+        width: 300px;
+        height: 330px;
+        perspective: 900px;
+        perspective-origin: 50% 50%;
+        z-index: 1;
+      }
+
+      .cf-ring {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      .cf-card {
+        position: absolute;
+        width: 280px;
+        height: 310px;
+        top: 50%;
+        left: 50%;
+        margin-top: -155px;
+        margin-left: -140px;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        padding: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        cursor: pointer;
+        user-select: none;
+        will-change: transform, opacity, filter;
+        transition: transform 0.60s cubic-bezier(0.25,0.46,0.45,0.94),
+                    opacity 0.60s ease,
+                    filter 0.60s ease;
+      }
+
+      .cf-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 2px;
+        pointer-events: none;
+      }
+
+      .cf-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        background: transparent;
+        border: none;
+        color: #fff;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 80px !important;
+        transition: color 0.3s ease;
+      }
+      .cf-btn:hover { color: #ccc; }
+      .cf-btn.prev { left: 22px; }
+      .cf-btn.next { right: 22px; }
+
+      /* ── TABLET ── */
+      @media (max-width: 1024px) and (min-width: 769px) {
+        .slider-section {
+          margin-left: 30px;
+          margin-right: 30px;
+          width: calc(100% - 60px);
+        }
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 768px) {
+        .slider-section {
+          margin-left: 15px;
+          margin-right: 15px;
+          width: calc(100% - 30px);
+          height: 360px;
+        }
+        .cf-scene { width: 180px; height: 210px; }
+        .cf-card  { width: 170px; height: 200px; margin-top:-100px; margin-left:-85px; padding: 5px; }
+        .cf-btn   { font-size: 50px !important; }
+        .cf-btn.prev { left: 6px; }
+        .cf-btn.next { right: 6px; }
+      }
+
+      @media (max-width: 480px) {
+        .slider-section { height: 300px; }
+        .cf-scene { width: 150px; height: 180px; }
+        .cf-card  { width: 140px; height: 170px; margin-top:-85px; margin-left:-70px; }
+      }
+
+      /* ── LIGHTBOX ── */
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox.open { display: flex; }
+
+      .lightbox-inner {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-img {
+        max-width: 85vw;
+        max-height: 85vh;
+        border-radius: 8px;
+        object-fit: contain;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        display: block;
+      }
+
+      .lb-close {
+        position: fixed;
+        top: 18px;
+        right: 22px;
+        background: rgba(255,255,255,0.12);
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+        transition: background 0.2s;
+        line-height: 1;
+      }
+      .lb-close:hover { background: rgba(255,255,255,0.25); }
+
+      .lb-prev, .lb-next {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: #fff;
+        font-size: 42px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+        transition: background 0.2s;
+      }
+      .lb-prev, .lb-next {
+        display: none;
+      }
+
+      .lb-counter {
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255,255,255,0.6);
+        font-size: 13px;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+      }
+
+    </style>
+</head>
+<body>
+
+<!-- SLIDER -->
+<div class="slider-section">
+  <div class="cf-scene" id="scene">
+    <div class="cf-ring" id="ring">
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_0de473c647bc4611bc59a92e47fff21emv2-1/1561556588.jpg" alt="Slide 1"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_b141692b1bb74aada055b724504f7ea5mv2/652399879.jpg" alt="Slide 2"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_7bb767a44ceb4d8d9bceb11c2078f6cfmv2/1420745087.jpg" alt="Slide 3"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_0522a2d704664a5394556897f47fc97emv2/260886088.jpg" alt="Slide 4"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_8c09b5451fa94283934a48f17b4a79f4mv2/450324591.jpg" alt="Slide 5"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_02d4d6b229784245bc857a6ddbe92e2fmv2/2162652649.jpg" alt="Slide 6"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_0000cee3c5ed439f8a281d60f3cf9b93mv2/398183958.jpeg" alt="Slide 7"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_feb52c7231574c0cb81e2182de56c2e7mv2/3209781804.jpeg" alt="Slide 8"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_46a1ed8102294425957ab6b315f5716fmv2/538984479.jpg" alt="Slide 9"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_b17663253dfa4d788ee9c743b2c3d8b3mv2/3657470778.jpg" alt="Slide 10"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_ab02a5282194438eaf3ad1ff5ddaaddamv2/831920836.jpg" alt="Slide 11"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_cbd4ff60ee1544aa8e61e65cbc5fdb61mv2/2424052047.jpg" alt="Slide 12"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_bfbe89a40fe645acbe8e6b82b4fc5e6bmv2/1771547143.jpg" alt="Slide 13"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_ab93dfb7b6934e3980eb59cd026a5bbamv2/4035280124.jpg" alt="Slide 14"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_d276283cc342430e830aefe21bbee95emv2/2147324416.jpg" alt="Slide 15"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_74ad9f2b2401433396dee91bd5e1c430mv2/3848423637.jpg" alt="Slide 16"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_16a3a73d2aaa4fa580287ff478e8e9bfmv2/4227582147.jpg" alt="Slide 17"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_f933d09dbfdd44ddba661cf698b4f408mv2/2005321250.jpg" alt="Slide 18"/></div>
+      <div class="cf-card"><img src="https://www.pescadorescebu.com/wp-content/uploads/cache/2024/09/caf340_f86fbce6a86f4e4ebf845e708b000577mv2/632899040.jpg" alt="Slide 19"/></div>
+    </div>
+  </div>
+  <!-- Sirf ek baar buttons -->
+  <button class="cf-btn prev" id="btnPrev">&#8249;</button>
+  <button class="cf-btn next" id="btnNext">&#8250;</button>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&#x2715;</button>
+  <button class="lb-prev" id="lbPrev">&#8249;</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+  </div>
+  <button class="lb-next" id="lbNext">&#8250;</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+(function () {
+
+  const ring    = document.getElementById('ring');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+
+  const cards  = Array.from(ring.querySelectorAll('.cf-card'));
+  const N      = cards.length;
+  const SPREAD = 340;
+  const DEPTH  = 220;
+  const STEP   = (2 * Math.PI) / N;
+
+  let angles = cards.map((_, i) => (2 * Math.PI * i) / N);
+  let busy   = false;
+
+  const imgSrcs = cards.map(c => c.querySelector('img').src);
+
+  /* ── Render ── */
+  function render(instant) {
+    cards.forEach((card, i) => {
+      const a          = angles[i];
+      const cos        = Math.cos(a);
+      const sin        = Math.sin(a);
+      const tx         = sin * SPREAD;
+      const tz         = cos * DEPTH;
+      const scale      = 0.775 + cos * 0.225;
+      const brightness = 0.625 + cos * 0.375;
+      const saturate   = 0.7   + cos * 0.3;
+      const zi         = Math.round(100 + cos * 100);
+
+      card.style.transition = instant ? 'none'
+        : 'transform 0.60s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.60s ease, filter 0.60s ease';
+
+      card.style.transform     = `translateX(${tx}px) translateZ(${tz}px) scale(${scale})`;
+      card.style.filter        = `brightness(${brightness}) saturate(${saturate})`;
+      card.style.zIndex        = zi;
+      card.style.opacity       = cos < -0.5 ? 0 : 1;
+      card.style.pointerEvents = cos > 0.1 ? 'auto' : 'none';
+    });
+  }
+
+  /* ── Go ── */
+  function go(dir) {
+    if (busy) return;
+    busy = true;
+    angles = angles.map(a => a - dir * STEP);
+    render(false);
+    setTimeout(() => { busy = false; }, 660);
+  }
+
+  /* ── Front card index ── */
+  function getFrontIdx() {
+    let idx = 0, best = Infinity;
+    angles.forEach((a, i) => {
+      let norm = ((a % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+      if (norm > Math.PI) norm -= 2 * Math.PI;
+      if (Math.abs(norm) < best) { best = Math.abs(norm); idx = i; }
+    });
+    return idx;
+  }
+
+  /* ── Lightbox ── */
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+  const lbCounter = document.getElementById('lbCounter');
+  let lbIndex = 0;
+
+  function openLightbox(idx) {
+    lbIndex = idx;
+    lbImg.src = imgSrcs[lbIndex];
+    // Counter hide karo - sirf ek image show hogi
+    lbCounter.textContent = '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  function lbGoTo(idx) {
+    lbIndex = (idx + N) % N;
+    lbImg.src = imgSrcs[lbIndex];
+    lbCounter.textContent = `${lbIndex + 1} / ${N}`;
+  }
+
+  /* ── Card click ── */
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      const frontIdx = getFrontIdx();
+
+      if (i === frontIdx) {
+        // Sirf front card pe click → lightbox khulta hai us card ki image ke saath
+        openLightbox(i);
+      } else {
+        // Side card pe click → sirf front pe lao, lightbox mat kholo
+        if (busy) return;
+        let a = ((angles[i] % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+        if (a > Math.PI) a -= 2 * Math.PI;
+        const steps = Math.round(a / STEP);
+        if (steps === 0) return;
+        const dir = steps > 0 ? 1 : -1;
+        let count = 0;
+        const tick = () => {
+          if (count++ < Math.abs(steps)) { go(dir); setTimeout(tick, 130); }
+        };
+        tick();
+      }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => lbGoTo(lbIndex - 1));
+  lbNext.addEventListener('click', () => lbGoTo(lbIndex + 1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if (lightbox.classList.contains('open')) {
+      if (e.key === 'ArrowRight') lbGoTo(lbIndex + 1);
+      if (e.key === 'ArrowLeft')  lbGoTo(lbIndex - 1);
+      if (e.key === 'Escape')     closeLightbox();
+    } else {
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft')  go(-1);
+    }
+  });
+
+  /* ── Swipe ── */
+  let tx0 = 0;
+  const scene = document.getElementById('scene');
+  scene.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+  scene.addEventListener('touchend', e => {
+    const diff = tx0 - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) go(diff > 0 ? 1 : -1);
+  });
+
+  /* ── Buttons ── */
+  btnNext.addEventListener('click', () => go(1));
+  btnPrev.addEventListener('click', () => go(-1));
+
+  /* ── Init ── */
+  render(true);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    cards.forEach(c => c.style.transition = '');
+  }));
+
+})();
+</script>
+
+</body>
+</html>

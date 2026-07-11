@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; }
+.slider-container { display: flex; align-items: center; justify-content: space-around; height: 100%; }
+.slider-container img { max-width: 80%; max-height: 80%; }
+.close { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; cursor: pointer; }
+.slider-images-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+.slider-images{
+    display: flex;
+    column-gap: 10px;
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 25px;
+    /* width: 200px; */
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="slider-images-section">
+        <div class="slider-images-wrapper">
+            <div class="slider-images">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_b19676f73b20470f8e7eb34186d88799mv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_ab93dfb7b6934e3980eb59cd026a5bbamv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d943d6a4a835415e81c1268d40b511efmv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_0bed0efd0f35406aaa669893d3531cb7mv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_dbbd0a47c5714d329a49b56a0eee6249mv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_35ab06537c884cb4a9caf65f41f15218mv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d19deda89805426c9153e8099688694fmv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d2815cbfa36e4709ab28d9044298b6ecmv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_1c3840cebccf452ea7e710d4a018744cmv2_d_2048_1360_s_2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_f2f4e894c92845d594056b4e3794a807.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_82cb682584804e7eac3efc13f71e1729.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_2b7ec074217242dc9ff58980dd43021c.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_2e7255fd93a34f4099ee7bb79c3904ad.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_339fa3c1348d4c6ba7e6188b8a599a57.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_68c4ded33a2a49f89c4725898d76ff27mv2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_de0f1cac5cdd493cbbe41908a8a4776fmv2_d_2048_1360_s_2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_7c5e2d60c6da475aa4bbab5174d957d2.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_707899c08be845efb6a13a3fe139976c.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_79838232e3254900ac3905c828adf838.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_7bcd0d1317934083bd69ef92ce02c6de.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_bfb7af58ba354ee7a4ff7be74afb843f.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_cf7f6de83afa47c490d5809e3982dca8.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_67878d63ab4242ddab5a4308c09fe60f.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+    <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_97e4b00dc98f4886bf0b1c548436883e.webp" class="thumbnail" onclick="openPopup()" style="cursor:pointer; width: 120px; height: 120px; object-fit: cover; border-radius: 100px;">
+
+
+
+
+</div>
+        </div>
+    </div>
+
+
+<div id="myModal" class="modal">
+  <span class="close" onclick="closePopup()">&times;</span>
+  <div class="slider-container">
+    <button onclick="changeSlide(-1)">&#10094;</button>
+    <img id="modalImage" src="image1.jpg">
+    <button onclick="changeSlide(1)">&#10095;</button>
+  </div>
+</div>
+<script>
+    const images = ["https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_b19676f73b20470f8e7eb34186d88799mv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_ab93dfb7b6934e3980eb59cd026a5bbamv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d943d6a4a835415e81c1268d40b511efmv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_0bed0efd0f35406aaa669893d3531cb7mv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_dbbd0a47c5714d329a49b56a0eee6249mv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_35ab06537c884cb4a9caf65f41f15218mv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d19deda89805426c9153e8099688694fmv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_d2815cbfa36e4709ab28d9044298b6ecmv2.webp", "https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_1c3840cebccf452ea7e710d4a018744cmv2_d_2048_1360_s_2.webp"];
+let currentIndex = 0;
+
+function openPopup() {
+  document.getElementById("myModal").style.display = "block";
+  updateImage();
+}
+
+function closePopup() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+function changeSlide(direction) {
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+  updateImage();
+}
+
+function updateImage() {
+  document.getElementById("modalImage").src = images[currentIndex];
+}
+</script>
+</body>
+</html>

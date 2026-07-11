@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="blog.css">
+
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Noto+Rashi+Hebrew:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Blogs</title>
+    <style>
+        body{
+background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_0c44ae4483a14142ba66585c699813ffmv2.jpeg');
+background-size: cover;
+            background-repeat: no-repeat; 
+            background-position: center;
+        }
+        
+        
+        body{
+            margin: 0;
+            padding: 0;
+            /* background-image: linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)), url('https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_0c44ae4483a14142ba66585c699813ffmv2.jpeg');
+            background-size: cover; */
+            /* background-position: center; */
+        }
+       
+        *{
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-section{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(Blog-pic/caf340_0c44ae4483a14142ba66585c699813ffmv2.jpeg); */
+    background-size: cover;
+    margin: 0;
+}
+
+.boxed-div{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 100px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.main-heading{
+    color: #2389C9;
+    font-family: 'Noto Rashi Hebrew', 'sans-serif';
+    font-size: 43px;
+    font-weight: 600;
+    padding: 5px 30px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Blog Section */
+
+.blog-div{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 32%;
+}
+
+.blog img{
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.blog h3{
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.blog p{
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.blog a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.footer-content p {
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 10px !important;
+}
+
+
+
+/* Responsive Tablet Screen */
+
+@media (max-width:1170px){
+
+.main-section{
+    max-width: 100%;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxed-div{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.blog-div{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 48%;
+}
+
+.blog h3{
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.blog p{
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.blog a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+}
+
+
+/* Tablet Styles */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+ 
+    /* nav{
+        display: none;
+    } */
+    .home-tag-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+    .home-tag h2 {
+    color: #2389c9;
+    font-size: 43px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+ .home-tag-video iframe{
+    width: 95%;
+    height: 400px;
+    border-radius: 12px;
+ }
+ .main-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 60px;
+    margin-bottom: 30px;
+    gap: 10px;
+    border-bottom: 5px solid #efefef;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+ .main-content h2{
+    font-size: 22px;
+    width: 200px;
+ }
+ .main-content-center h2{
+    font-size: 22px;
+        font-family: "Saira", sans-serif;
+       margin: 0;
+ }
+ .main-content-center p{
+    font-size: 14px;
+    line-height: 19px;
+    max-width: 250px;
+ }
+ .main-content h4{
+    font-size: 16px;
+    line-height: 19px;
+ }
+ .main-content p{
+    font-size: 14px;
+    line-height: 19px;
+    max-width: 220px;
+ }
+ .main-content-center {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-left: 5px solid #efefef;
+    border-right: 5px solid #efefef;
+    padding-bottom: 50px;
+}
+ .li {
+    width: 340px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Saira", sans-serif;
+    color: gray;
+    padding-left: 20px;
+    max-width: 200px;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+    box-sizing: content-box;
+    margin-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.swiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  width: auto;
+  display: flex;
+}
+
+.swiper-slide img {
+  width: 200px;
+  border-radius: 10px;
+  display: block;
+}
+
+ .swiper {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 20px 0; */
+  }
+
+  .swiper-slide {
+    width: 200px;
+    /* height: 200px; Square box for logos */
+  }
+
+  .swiper-slide img {
+    width: 200px;
+    border-radius: 10px;
+    /* height: 100%; */
+    /* object-fit: contain; Logos ko bina crop kiye fit karega */
+    /* display: block; */
+  }
+  .swiper-head{
+    text-align: center;
+  }
+  .swiper-head h3{
+    font-size: 45px;
+    font-weight: 700;
+        font-family: "Saira", sans-serif;
+        margin: 0;
+
+  }
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    /* border: 1px solid rgb(182, 182, 182); */
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.1), 0 3px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 170px;
+}
+.icon-box h3 {
+    color: #2389C9;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 24px;
+    font-family: "Saira", sans-serif;
+    margin: 0;
+}
+    .main-content p {
+        font-size: 14px;
+        line-height: 19px;
+        max-width: 220px;
+    }
+    .icon-box p{
+        font-size: 14px;
+        /* color: red; */
+        max-width: 180px;
+        padding-top:5px;
+    }
+     .footer-section {
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+            padding-left: 20px;
+        padding-right: 20px;
+    
+}
+.footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px !important;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(132, 132, 132);
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    gap: 30px;
+}
+.footer img {
+    width: 120px !important;
+}
+.footer-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+    padding-bottom: 25px;
+}
+.footer-content li {
+    font-size: 13px;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+.footer-content p {
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 10px;
+}
+.swiper-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .swiper-slide {
+    /* 100% / 4 = 25% */
+    width: 25% !important; 
+    flex: 0 0 25%;
+    padding: 0 5px; /* Gap adjust karne ke liye */
+    box-sizing: border-box;
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+}
+
+/* Responsive Mobiloe Screen */
+
+@media (max-width:767px){
+
+.main-section{
+    max-width: 100%;
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxed-div{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+
+.blog-div{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+.footer-section {
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+}
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(132, 132, 132);
+    padding-left: 20px;
+}
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+.footer img {
+    width: 150px;
+}
+.footer-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+    padding-bottom: 15px;
+}
+.footer-content li {
+    font-size: 13px;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+}
+.footer-section{
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.footer-wrapper{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 100px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(132, 132, 132);
+
+}
+.footer-content-wrapper {
+    display: flex;
+    gap: 70px !important;
+}
+.footer img{
+    width: 200px;
+}
+.footer-content h3{
+    font-size: 17px;
+    font-weight: 500;
+     font-family: "Poppins", sans-serif;
+     padding-bottom: 10px;
+     color: white;
+     margin: 0;
+     padding-bottom: 15px;
+}
+.footer-content li a{
+      font-size: 13px;
+    font-weight: 400;
+   font-family: "Open Sans", sans-serif;
+   color: white;
+}
+.footer-content li a{
+    text-decoration: none;
+}
+.footer-content li{
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+.footer-content-wrapper{
+    display: flex;
+    gap: 30px;
+}
+.footer-content p{
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+   font-family: "Open Sans", sans-serif;
+
+}
+.social-icons{
+    display: flex;
+    gap: 15px;
+}
+.social-icons svg{
+    width: 28px;
+    height: 28px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: white;
+    fill: #2d6bff;
+}
+.copy-right{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+   font-family: "Open Sans", sans-serif;
+color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-top: 10px;
+}
+
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+
+/* Hamburger Styling */
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { width: 35px; height: 5px; background: white; transition: all 0.3s ease; } /* Transition for animation */
+
+/* Tablet and Mobile Media Query */
+@media (max-width: 992px) {
+    .hamburger { display: flex; gap: 5px;  z-index: 100;} /* Ensure it stays above other elements */
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 25%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 725px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+.nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        max-width: 800px;
+    }
+    .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+        padding-left: 35px;
+    }    
+    /* Cross icon effect when hamburger is active */
+    .hamburger.active .bar1 { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar2 { opacity: 0; }
+    .hamburger.active .bar3 { transform: translateY(-8px) rotate(-45deg); }
+     .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 480px){
+     .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 20%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 375px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .header-img img{
+        width: 120px;
+    }
+        .nav-links.active {
+        display: flex;
+        height: 400px;
+        justify-content: center;
+    }
+    .footer-section {
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+}
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(132, 132, 132);
+    padding-left: 20px;
+}
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+.footer img {
+    width: 150px;
+}
+.footer-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+    padding-bottom: 15px;
+}
+.footer-content li {
+    font-size: 13px;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+}
+
+    </style>
+</head>
+<body>
+    
+    
+    <Section class="main-section">
+        <div class="boxed-div">
+            <h1 class="main-heading">
+                Blogs
+            </h1>
+
+
+            <!-- Blog 1 -->
+
+            <div class="blog-div">
+                <div class="blog">
+                    <img src="Blog-pic/download-4.jpg" alt="">
+                    <h3>
+                        Beachfront Hotel in Cebu: Experience the Best of Moalboal Resorts & Luxury Stays
+                    </h3>
+                    <p>
+                        Cebu has long been one of the most popular destinations in the Philippines, offering a 
+                        blend of history, culture, city life, and of course, some of the most beautiful beaches 
+                        in Asia. For travelers who want the ultimate tropical getaway,
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+
+                
+                <!-- Blog 2 -->
+
+                <div class="blog">
+                    <img src="Blog-pic/download-3.jpg" alt="">
+                    <h3>
+                        Cebu Beach Resorts: Discover Affordable and Luxury Stays in Moalboal
+                    </h3>
+                    <p>
+                        Cebu is one of the most sought-after destinations in the Philippines, offering a mix of vibrant 
+                        city life, cultural treasures, and world-class beaches. Whether you’re here to dive into the 
+                        turquoise waters, explore heritage sites, or simply relax by the
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+
+
+                <!-- Blog 3 -->
+
+                <div class="blog">
+                    <img src="Blog-pic/download-2.jpg" alt="">
+                    <h3>
+                        Moalboal Hotels: Your Complete Guide to the Best Resorts and Stays in Cebu
+                    </h3>
+                    <p>
+                        When planning a trip to Cebu, one destination that should be at the top of your list is Moalboal. 
+                        Known for its stunning beaches, rich marine life, and laid-back charm, Moalboal has become a 
+                        favorite among both local and international
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+
+
+                <!-- Blog 4 -->
+
+                <div class="blog">
+                    <img src="Blog-pic/download-1.jpg" alt="">
+                    <h3>
+                        Why Moalboal is the Best Destination for Beach Resorts and Hotels in Cebu
+                    </h3>
+                    <p>
+                        When travelers think about the Philippines, pristine beaches, turquoise waters, and warm hospitality 
+                        come to mind. While Cebu is world-famous for its mix of city life and island paradise, one particular 
+                        destination stands out for both adventure and relaxation—Moalboal. Known
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+
+
+                <!-- Blog 5 -->
+
+                <div class="blog">
+                    <img src="Blog-pic/download.jpg" alt="">
+                    <h3>
+                        Experience Paradise: The Ultimate Guide to Moalboal Accommodation and Luxury Hotels in Cebu
+                    </h3>
+                    <p>
+                        If you’re planning a dream vacation to the Philippines, there’s no better destination than Cebu. 
+                        Famous for its breathtaking beaches, rich marine life, and vibrant local culture, Cebu is a traveler’s 
+                        paradise. Among its gems lies Moalboal accommodation, offering everything
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+
+
+                <!-- Blog 6 -->
+
+                <div class="blog">
+                    <img src="Blog-pic/tulum-hotel-jashita-rooftop-pool-.jpeg" alt="">
+                    <h3>
+                        Short-Term or Long-Term Stay? Why Pescadores Seaside Suites is Perfect for Both
+                    </h3>
+                    <p>
+                        Looking for a place to stay in Cebu that combines convenience, comfort, and affordability? Whether 
+                        you’re booking a short weekend escape or planning a longer tropical stay, Pescadores Seaside Suites in 
+                        Moalboal offers the perfect accommodation for every kind of
+                    </p>
+                    <a href="#">Read More>></a>
+                </div>
+            </div>
+        </div>
+    </Section>
+   
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    function toggleMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    }
+</script>
+</body>
+</html>

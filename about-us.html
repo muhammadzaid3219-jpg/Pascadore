@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="about-us.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Noto+Rashi+Hebrew:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
+
+    <style>
+        body{
+            background-image : linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)), url('https://www.pescadorescebu.com/wp-content/uploads/2024/08/caf340_c88bc787355644fc97eef82309e0ba32mv2_d_2080_1560_s_2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat; 
+            background-position: center;
+
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(Pics/caf340_c88bc787355644fc97eef82309e0ba32mv2_d_2080_1560_s_2.jpg); */
+            background-size: cover;
+            margin: 0;
+        }
+
+        .boxed-div {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 100px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .main-heading {
+            color: #2389C9;
+            font-family: 'NotoRashiHebrew', 'sans-serif';
+            font-size: 43px;
+            font-weight: 600;
+            padding: 5px 40px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 0px;
+        }
+
+        .paragraph-div {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .paragraph-div p {
+            color: white;
+            font-family: 'Saira', 'sans-serif';
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+
+
+
+        /* Content Section */
+
+        /* First Container */
+
+        .content-div {
+            display: flex;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .first-div {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .first-div h2 {
+            color: white;
+            font-family: 'Saira', 'sans-serif';
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 30px;
+        }
+
+        .first-div span {
+            color: white;
+            font-family: 'Poppins', 'sans-serif';
+            font-size: 17px;
+            font-weight: 400;
+            margin: 3px 0px;
+        }
+
+        .first-div span {
+            display: flex;
+            gap: 5px;
+        }
+
+        .first-div span svg {
+            fill: white;
+            width: 17px;
+            height: auto;
+        }
+
+
+
+
+        /* Second Container */
+
+        .second-div {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            justify-content: center;
+        }
+
+        .second-div iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+
+
+        /* Content Section 2 */
+
+        /* First Container */
+
+        .content-div-two {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .third-div {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 10px;
+        }
+
+        .third-div h2 {
+            color: white;
+            font-family: 'Saira', 'sans-serif';
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .third-div p {
+            color: white;
+            font-family: 'Saira', 'sans-serif';
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+
+
+
+        /* Responsive Tablet Screen */
+
+        @media (max-width:1170px) {
+
+            .main-section {
+                max-width: 100%;
+                width: 100%;
+                margin: 0px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .boxed-div {
+                display: flex;
+                flex-direction: column;
+                width: fit-content;
+                margin: 0 auto;
+                padding: 100px 30px;
+            }
+
+            .content-div {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                height: 800px;
+            }
+
+            .first-div {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+            }
+
+            .second-div {
+                width: 100%;
+                height: 100%;
+            }
+
+
+            .content-div-two {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .third-div {
+                width: 100%;
+            }
+
+        }
+
+
+
+
+        /* Responsive Mobile Screen */
+
+        @media (max-width:768px) {
+
+            .main-section {
+                max-width: 100%;
+                width: 100%;
+                margin: 0px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .boxed-div {
+                display: flex;
+                flex-direction: column;
+                width: fit-content;
+                margin: 0 auto;
+                padding: 100px 20px;
+                gap: 20px;
+            }
+
+            .main-heading {
+                font-size: 30px;
+                padding: 5px 20px;
+            }
+
+            .paragraph-div {
+                font-size: 14px;
+            }
+
+            .content-div {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                height: 700px;
+            }
+
+            .first-div {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .first-div h2 {
+                font-size: 24px;
+            }
+
+            .first-div span {
+                font-size: 14px;
+                justify-content: flex-start;
+            }
+
+            .first-div span svg {
+                width: 15px;
+                height: auto;
+            }
+
+            .second-div {
+                width: 100%;
+                height: 100%;
+            }
+
+
+            .content-div-two {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .third-div {
+                width: 100%;
+            }
+
+            .third-div h2 {
+                font-size: 24px;
+            }
+
+            .third-div p {
+                font-size: 14px;
+            }
+
+        }
+       
+
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+
+/* Hamburger Styling */
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { width: 35px; height: 5px; background: white; transition: all 0.3s ease; } /* Transition for animation */
+
+/* Tablet and Mobile Media Query */
+@media (max-width: 992px) {
+    .hamburger { display: flex; gap: 5px;  z-index: 100;} /* Ensure it stays above other elements */
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 25%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 725px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        max-width: 800px;
+    }
+    .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+        padding-left: 35px;
+    }
+    
+    /* Cross icon effect when hamburger is active */
+    .hamburger.active .bar1 { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar2 { opacity: 0; }
+    .hamburger.active .bar3 { transform: translateY(-8px) rotate(-45deg); }
+     .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 480px){
+     .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 20%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 375px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .header-img img{
+        width: 120px;
+    }
+        .nav-links.active {
+        display: flex;
+        height: 400px;
+        justify-content: center;
+    }
+    html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+.footer-section {
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+}
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(132, 132, 132);
+    padding-left: 20px;
+}
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+}
+.footer img {
+    width: 150px;
+}
+.footer-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+    padding-bottom: 15px;
+}
+.footer-content li {
+    font-size: 13px;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+.footer-section {
+    background: #2d6bff;
+    padding-top: 70px;
+    padding-bottom: 10px;
+}
+.footer-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 40px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid rgb(132, 132, 132);
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+.footer-content-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    gap: 30px;
+}
+.footer-content h3
+ {
+        font-size: 15px;
+        font-weight: 500;
+        font-family: "Poppins", sans-serif;
+        padding-bottom: 10px;
+        color: white;
+        margin: 0;
+        padding-bottom: 25px;
+        max-width: 170px;
+    }
+.footer img {
+    width: 100px;
+}
+.footer-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 10px;
+    color: white;
+    margin: 0;
+    padding-bottom: 25px;
+}
+.footer-content li {
+    font-size: 13px;
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+.footer-content p {
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 10px;
+}
+.footer-content li a{
+    color: white;
+}
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+    
+
+    <Section class="main-section">
+        <div class="boxed-div">
+            <h1 class="main-heading">
+                About Us
+            </h1>
+
+
+            <div class="paragraph-div">
+                <p>
+                    Pescadores Suites, one of the scenic destinations in the Philippines located at the south part of
+                    Cebu.
+                    This state of the art Santorini-inspired beachfront hotel, with 22 rooms, 5 villa and 3 suites, Our
+                    hotel
+                    offers contemporary style with a fun and fresh appeal for both leisure and relaxation. Offering an
+                    array of
+                    choices from standard, deluxe, suite rooms & villas, spa wellness, activities, and in-room
+                    entertainment.
+                    Positioned at the strip of neighboring hotels, restaurants and cafes making our property the most
+                    ideal choice of
+                    having a wonderful Moalboal experience.
+                </p>
+
+                <p>
+                    In the heart of Basdiot Moalboal, the hotel is your perfect hideaway from which you can explore
+                    nearby waterfalls,
+                    dive sites, restaurants and the famous Pescador island which can be seen across the pool area.
+                    Diving enthusiasts are
+                    in for a breath-taking view of the underwater world as some of the country’s best diving sites are
+                    found outside the hotel.
+                    Turtles, and sardines are abundantly available to your viewing. If you are lucky, dolphins and
+                    threshers are also seen by
+                    chance.
+                </p>
+
+                <p>
+                    Back in the hotel, there’s absolutely no room for boredom with limitless opportunities in both
+                    indoor and outdoor adventures
+                    for kids and adults alike. From swimming, snorkeling, spa wellness and game room area; rain or
+                    shine, you will be able to find
+                    something, no matter what interests you.
+                </p>
+            </div>
+
+
+            <div class="content-div">
+                <div class="first-div">
+                    <h2>
+                        Key Features:
+                        </h5>
+
+                        <!-- Bullet points -->
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Few minutes drive to other southbound tourist destinations</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Snorkeling in front of the beach with free equipment</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Dive site and marine sanctuary fronting Pescadores</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Infinity pool with pool bar and restaurant</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Transparent kayak available by the sunset</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Best view of Pescador Island with a wide viewing deck</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Complimentary WiFi in rooms and public areas</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Indoor game room activities</span>
+                        <span> <svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z">
+                                </path>
+                            </svg> Salon & Massage Wellness Spa</span>
+                </div>
+
+                <div class="second-div">
+                    <iframe src="https://www.youtube.com/embed/3hF8wKUMUHE" title="YouTube video player" frameborder="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+
+            <div class="content-div-two">
+                <div class="third-div">
+                    <h2>
+                        Experience the Best of Cebu—Tradition, Luxury, and Nature
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            More than just a stay, Pescadores Suites offers an experience that connects you to the rich
+                            tradition in Cebu.
+                            From the colors of our rooms to the warmth of our service, everything is designed to reflect
+                            the local spirit,
+                            while providing all the conveniences of modern luxury.
+                            We’re proud to be recognized among the best hotels in Cebu, blending the charm of a luxury
+                            hotel in the Philippines with the affordability
+                            and comfort of a boutique resort.
+                        </p>
+                </div>
+
+
+                <div class="third-div">
+                    <h2>
+                        Our Story
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            Pescadores Suites Moalboal was born out of a desire to provide a place where visitors can
+                            truly connect with the beauty and culture of Cebu.
+                            As passionate locals, we understand the essence of this magical island, and we’ve poured
+                            that love and respect into creating a space where our
+                            guests can unwind and explore.
+                        </p>
+                        <p>
+                            From the moment you step into our property, you’ll feel the warmth of Cebu’s tradition. Our
+                            dedicated team is here to ensure that your stay is nothing
+                            short of perfect, from providing personalized service to offering insider tips about the
+                            best local attractions and experiences.
+                        </p>
+                </div>
+            </div>
+
+
+            <div class="content-div-two">
+                <div class="third-div">
+                    <h2>
+                        Perfect for Every Traveler
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            Whether you’re looking for a 5-star hotel in Cebu at a more accessible rate, or seeking
+                            cheap hotels in Cebu city with swimming pool-level
+                            convenience near nature, we offer a tailored experience for every guest.<br>
+                            Families, honeymooners, digital nomads, and diving groups will all find their ideal getaway
+                            here—at one of the most welcoming Moalboal hotels and a proud gem among
+                            Cebu accommodations.
+                        </p>
+                </div>
+
+
+                <div class="third-div">
+                    <h2>
+                        Our Mission
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            Our mission is simple: To provide every guest with a memorable and meaningful experience in
+                            the heart of Moalboal, Cebu. We aim to deliver exceptional service, comfortable
+                            accommodations, and an authentic slice of Cebu’s culture. Whether you’re here for a family
+                            vacation, a romantic getaway, or a business retreat, we want to make your
+                            stay special.
+                        </p>
+                </div>
+            </div>
+
+
+            <div class="content-div-two">
+                <div class="third-div">
+                    <h2>
+                        Sustainability and Community Engagement
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            At Pescadores Suites Moalboal, we care deeply about the environment and the community around
+                            us. We are committed to sustainable practices that
+                            protect the beauty of our surroundings, especially the pristine beaches and Tubli Marine
+                            Sanctuary. We actively support local initiatives and
+                            encourage our guests to do the same by engaging in eco-friendly activities and supporting
+                            local businesses.
+                        </p>
+                </div>
+
+
+                <div class="third-div">
+                    <h2>
+                        Join Us at Pescadores Suites
+                        </h5>
+
+                        <!-- Paragraph -->
+                        <p>
+                            Come explore the perfect blend of adventure, serenity, and Filipino hospitality. At
+                            Pescadores Suites Moalboal, you’re not just checking into a
+                            hotel—you’re stepping into a paradise made just for you. Book your stay now and discover why
+                            we’re a top pick among affordable hotels in Cebu,
+                            yet always offer a luxury hotel experience in the Philippines.
+                        </p>
+                </div>
+            </div>
+        </div>
+    </Section>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    function toggleMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    }
+</script>
+</body>
+
+</html>

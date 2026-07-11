@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        .top-section p{
+        color: black;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: roboto, sans-serif;
+        padding-bottom: 10px;
+        margin: 0;
+        padding-top: 10px;
+      }
+
+.top-section{
+        background-color: white;
+        text-align: center;
+      }
+          .header-img img{
+            width: 200px;
+        }
+        header{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-top: 20px;
+            background-color: rgb(160, 156, 156);
+        }
+        nav{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+    nav ul{
+        display: flex;
+        gap: 25px;
+        list-style-type: none;
+    }
+    nav li a{
+        font-size: 21px;
+        font-weight: 400;
+        font-family: poppins, sans-serif;
+        text-decoration: none;
+        color: white;
+    }
+        .header {
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0);
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .head {
+            width: 1200px;
+            display: flex;
+            padding: 10px 0px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0px auto;
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0px;
+        }
+
+        .menu ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            font-size: 19px;
+            font-weight: 400;
+            font-family: "Poppins";
+            color: white;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-item {
+            font-size: 19px;
+            font-weight: 400;
+            font-family: "Poppins";
+            color: white;
+            text-decoration: none;
+        }
+
+        .head-top {
+            background-color: white;
+            margin: 0px;
+            height: 26px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding: 5px 0px;
+        }
+
+        .head-top p {
+            font-size: 16px;
+            font-weight: 500;
+            font-family: "Roboto";
+        }
+
+        /* Hamburger button — hidden on desktop */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+            z-index: 100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Hamburger open state */
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Mobile drawer — hidden on desktop */
+        .mobile-menu {
+            display: none;
+        }
+
+       
+/* Basic Navbar Styles */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+
+/* Hamburger Styling */
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { width: 35px; height: 5px; background: white; transition: all 0.3s ease; } /* Transition for animation */
+
+/* Tablet and Mobile Media Query */
+@media (max-width: 992px) {
+    .hamburger { display: flex; gap: 5px;  z-index: 100;} /* Ensure it stays above other elements */
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 25%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 725px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .nav-links.active { display: flex; } /* Show menu when active */
+    
+    /* Cross icon effect when hamburger is active */
+    .hamburger.active .bar1 { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar2 { opacity: 0; }
+    .hamburger.active .bar3 { transform: translateY(-8px) rotate(-45deg); }
+     .nav-links.active {
+        display: flex;
+        height: 420px;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 480px){
+     .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 20%; /* Adjust top padding based on header height */
+        left: 0;
+        max-width: 375px;
+        width: 100%;
+        background: black;
+        text-align: left;
+        transition: all 0.3s ease;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+     .top-section p{
+        color: black;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: roboto, sans-serif;
+        padding-bottom: 10px;
+      }
+    .header-img img{
+        width: 120px;
+    }
+        .nav-links.active {
+        display: flex;
+        height: 400px;
+        justify-content: center;
+    }
+    .top-section p{
+        color: black;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: roboto, sans-serif;
+        padding-bottom: 10px;
+      }
+}
+    </style>
+</head>
+<body>
+<div class="header-section">
+        <div class="top-section">
+        <p>We only accept payments via GCash and credit/debit cards. For security reasons, we do not request or accept direct bank transfers to personal accounts.</p>
+      </div>
+     <header>
+    <nav class="navbar">
+        <div class="header-img">
+            <img src="https://www.pescadorescebu.com/wp-content/uploads/2024/08/pescadores2022.png" alt="Logo" width="200">
+        </div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="">Instafeed</a></li>
+            <li><a href="">Rooms</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="vicinity.html">Vicinity</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <script>
+var swiper = new Swiper(".mySwiper", {
+  loop: true,
+  slidesPerView: 5,
+  spaceBetween: 10,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  grabCursor: true,
+});
+
+
+var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    slidesPerView: 5,
+    spaceBetween: 10, 
+    autoplay: {
+      delay: 8000,
+      disableOnInteraction: false,
+    },
+    grabCursor: true,
+  });
+
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    function toggleMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

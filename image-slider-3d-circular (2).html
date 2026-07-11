@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>3D Circular Carousel</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background:#111;
+    font-family: sans-serif;
+  }
+
+  .slider-section {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background: url('background.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slider-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+  }
+
+  /* Scene gives us the perspective for the depth illusion */
+  .cf-scene {
+    position: relative;
+    width: 220px;
+    height: 240px;
+    perspective: 900px;
+    perspective-origin: 50% 50%;
+    z-index: 1;
+  }
+
+  /* Ring is just a positioning anchor — it never rotates */
+  .cf-ring {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Cards stay perfectly flat / straight-facing at ALL times.
+     Only translateX, translateZ, scale, opacity change — never rotateY. */
+  .cf-card {
+    position: absolute;
+    width: 210px;
+    height: 230px;
+    top: 50%;
+    left: 50%;
+    margin-top:  -115px;
+    margin-left: -105px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+    padding: 8px 8px 28px 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    cursor: pointer;
+    user-select: none;
+    will-change: transform, opacity, filter;
+    /* smooth transition on every property */
+    transition: transform 0.60s cubic-bezier(0.25,0.46,0.45,0.94),
+                opacity   0.60s ease,
+                filter    0.60s ease;
+  }
+
+  .cf-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .cf-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.45);
+    color: #fff;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .cf-btn:hover { background: rgba(255,255,255,0.32); }
+  .cf-btn.prev  { left: 22px; }
+  .cf-btn.next  { right: 22px; }
+
+  .cf-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+  }
+  .cf-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: background .3s, transform .3s;
+  }
+  .cf-dot.active {
+    background: #fff;
+    transform: scale(1.35);
+  }
+
+  @media (max-width: 900px) {
+    .slider-section { height: 320px; }
+    .cf-scene { width: 180px; height: 200px; }
+    .cf-card  { width: 170px; height: 190px; margin-top:-95px; margin-left:-85px; padding: 6px 6px 22px 6px; }
+  }
+  @media (max-width: 600px) {
+    .slider-section { height: 260px; }
+    .cf-scene { width: 138px; height: 156px; }
+    .cf-card  { width: 130px; height: 148px; margin-top:-74px; margin-left:-65px; padding: 5px 5px 18px 5px; }
+    .cf-btn   { width: 36px; height: 36px; font-size: 20px; }
+    .cf-btn.prev { left: 6px; }
+    .cf-btn.next { right: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slider-section">
+  <div class="cf-scene" id="scene">
+    <div class="cf-ring" id="ring">
+
+      <!--
+        ★ ADD YOUR IMAGES HERE ★
+        Replace src="" values with your image paths.
+        Add or remove .cf-card blocks — any number works.
+      -->
+      <div class="cf-card"><img src="image1.jpg"  alt="Slide 1"/></div>
+      <div class="cf-card"><img src="image2.jpg"  alt="Slide 2"/></div>
+      <div class="cf-card"><img src="image3.jpg"  alt="Slide 3"/></div>
+      <div class="cf-card"><img src="image4.jpg"  alt="Slide 4"/></div>
+      <div class="cf-card"><img src="image5.jpg"  alt="Slide 5"/></div>
+      <div class="cf-card"><img src="image6.jpg"  alt="Slide 6"/></div>
+      <div class="cf-card"><img src="image7.jpg"  alt="Slide 7"/></div>
+      <div class="cf-card"><img src="image8.jpg"  alt="Slide 8"/></div>
+      <div class="cf-card"><img src="image9.jpg"  alt="Slide 9"/></div>
+      <div class="cf-card"><img src="image10.jpg" alt="Slide 10"/></div>
+
+    </div>
+  </div>
+
+  <button class="cf-btn prev" id="btnPrev">&#8249;</button>
+  <button class="cf-btn next" id="btnNext">&#8250;</button>
+  <div class="cf-dots" id="dots"></div>
+</div>
+
+<script>
+(function () {
+
+  /*
+   * HOW THIS WORKS — NO CSS ROTATION ON CARDS, EVER
+   * ─────────────────────────────────────────────────
+   * Cards sit on an imaginary circle. We track each card's
+   * "angle" on that circle (0° = front, 180° = directly behind).
+   *
+   * From the angle we compute:
+   *   translateX  = sin(angle) * SPREAD   → left/right position
+   *   translateZ  = cos(angle) * DEPTH    → near/far depth
+   *   scale       = mapped from translateZ → big in front, small in back
+   *   brightness  = fades as card goes back
+   *   zIndex      = front card on top
+   *
+   * No rotateY anywhere — cards are ALWAYS facing the viewer straight.
+   * When you click Next, every card's angle advances by (360/N) degrees.
+   */
+
+  const ring     = document.getElementById('ring');
+  const btnPrev  = document.getElementById('btnPrev');
+  const btnNext  = document.getElementById('btnNext');
+  const dotsWrap = document.getElementById('dots');
+
+  const cards = Array.from(ring.querySelectorAll('.cf-card'));
+  const N     = cards.length;
+
+  // How wide cards spread left/right (px) and how deep the orbit is (px)
+  const SPREAD = 340;
+  const DEPTH  = 220;
+
+  // Each card's current angle on the circle in RADIANS
+  // Card 0 starts at front (angle=0), others spaced evenly
+  let angles = cards.map((_, i) => (2 * Math.PI * i) / N);
+
+  const STEP = (2 * Math.PI) / N;  // one step = one card forward
+
+  let busy = false;
+
+  /* ── Apply position to every card based on its angle ── */
+  function render(instant) {
+    cards.forEach((card, i) => {
+      const a   = angles[i];
+      const cos = Math.cos(a);   // +1 = front, -1 = back
+      const sin = Math.sin(a);   // +1 = right, -1 = left
+
+      const tx         = sin * SPREAD;
+      const tz         = cos * DEPTH;
+
+      // scale: front (cos=1) → 1.0,  back (cos=-1) → 0.55
+      const scale      = 0.775 + cos * 0.225;
+
+      // brightness: front → 1.0, back → 0.25
+      const brightness = 0.625 + cos * 0.375;
+
+      // saturate: front → 1.0, back → 0.4
+      const saturate   = 0.7   + cos * 0.3;
+
+      // zIndex: higher = closer to viewer
+      const zi = Math.round(100 + cos * 100);
+
+      if (instant) {
+        card.style.transition = 'none';
+      } else {
+        card.style.transition =
+          'transform 0.60s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.60s ease, filter 0.60s ease';
+      }
+
+      // *** NO rotateY — only translate + scale ***
+      card.style.transform  = `translateX(${tx}px) translateZ(${tz}px) scale(${scale})`;
+      card.style.filter     = `brightness(${brightness}) saturate(${saturate})`;
+      card.style.zIndex     = zi;
+
+      // hide cards that are mostly behind the front card
+      // (cos < -0.5 means more than 120° away — invisible zone)
+      card.style.opacity    = cos < -0.5 ? 0 : 1;
+      card.style.pointerEvents = cos > 0.1 ? 'auto' : 'none';
+    });
+
+    // active dot = card whose angle is closest to 0
+    let closestIdx = 0;
+    let closestDist = Infinity;
+    angles.forEach((a, i) => {
+      // normalise angle to [-PI, PI]
+      let norm = ((a % (2*Math.PI)) + 2*Math.PI) % (2*Math.PI);
+      if (norm > Math.PI) norm -= 2 * Math.PI;
+      const dist = Math.abs(norm);
+      if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+    });
+    dotsWrap.querySelectorAll('.cf-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === closestIdx);
+    });
+  }
+
+  /* ── Advance all angles by delta ── */
+  function go(dir) {
+    if (busy) return;
+    busy = true;
+
+    // dir +1 = next (cards move left → new card from right)
+    // dir -1 = prev (cards move right → new card from left)
+    angles = angles.map(a => a - dir * STEP);
+
+    render(false);
+    setTimeout(() => { busy = false; }, 660);
+  }
+
+  /* ── Build dots ── */
+  cards.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'cf-dot';
+    d.addEventListener('click', () => {
+      if (busy) return;
+      // find how many steps card i is from the front
+      // front = angle closest to 0
+      let a = ((angles[i] % (2*Math.PI)) + 2*Math.PI) % (2*Math.PI);
+      if (a > Math.PI) a -= 2 * Math.PI;
+      const steps = Math.round(a / STEP);
+      if (steps === 0) return;
+      const dir = steps > 0 ? 1 : -1;
+      const abs = Math.abs(steps);
+      let count = 0;
+      const tick = () => {
+        if (count++ < abs) { go(dir); setTimeout(tick, 130); }
+      };
+      tick();
+    });
+    dotsWrap.appendChild(d);
+  });
+
+  /* ── Click side card → bring to front ── */
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if (busy) return;
+      let a = ((angles[i] % (2*Math.PI)) + 2*Math.PI) % (2*Math.PI);
+      if (a > Math.PI) a -= 2 * Math.PI;
+      const steps = Math.round(a / STEP);
+      if (steps === 0) return;
+      const dir = steps > 0 ? 1 : -1;
+      const abs = Math.abs(steps);
+      let count = 0;
+      const tick = () => {
+        if (count++ < abs) { go(dir); setTimeout(tick, 130); }
+      };
+      tick();
+    });
+  });
+
+  /* ── Buttons ── */
+  btnNext.addEventListener('click', () => go(1));
+  btnPrev.addEventListener('click', () => go(-1));
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft')  go(-1);
+  });
+
+  /* ── Touch / swipe ── */
+  let tx0 = 0;
+  const scene = document.getElementById('scene');
+  scene.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+  scene.addEventListener('touchend',   e => {
+    const diff = tx0 - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) go(diff > 0 ? 1 : -1);
+  });
+
+  /* ── Auto-play ── */
+  let timer = setInterval(() => go(1), 3200);
+  scene.addEventListener('mouseenter', () => clearInterval(timer));
+  scene.addEventListener('mouseleave', () => { timer = setInterval(() => go(1), 3200); });
+
+  /* ── Initial render (instant, no animation) ── */
+  render(true);
+  // re-enable transitions after first paint
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    cards.forEach(c => c.style.transition = '');
+  }));
+
+})();
+</script>
+
+</body>
+</html>
